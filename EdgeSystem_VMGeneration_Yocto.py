@@ -35,7 +35,7 @@ yocto_images = []
 for path in yocto_vm_path:
     yocto_images.append(str(path).split("/")[-1].strip())
     
-if "yocto_"+max(yocto_artifacts)+".qcow2" not in yocto_images:
+if "yocto_"+max(yocto_artifacts)+".qcow2.bz" not in yocto_images:
     print("New Yocto Release found..")
     print("Creating VM")
     os.system("curl -u '{user}:{password}' -o yocto.wic.bz2 {release_path}".format(user=uname,password=pwd,release_path=yocto_wic_image))
