@@ -38,7 +38,7 @@ for path in yocto_vm_path:
 if "yocto_"+max(yocto_artifacts)+".qcow2" not in yocto_images:
     print("New Yocto Release found..")
     print("Creating VM")
-    os.system("curl -u '{user}:{password}' -o yocto.wic.bz2 {release_path}".format(release_path=yocto_wic_image))
+    os.system("curl -u '{user}:{password}' -o yocto.wic.bz2 {release_path}".format(user=uname,password=pwd,release_path=yocto_wic_image))
     os.system("bzip2 -d yocto.wic.bz2")
     os.system("qemu-img convert -f raw -O qcow2 {wic_image} {qcow_image}".format(wic_image="yocto.wic",qcow_image="yocto_"+max(yocto_artifacts)+".qcow2"))
     os.system("bzip2 -zk {qcow_image}".format(qcow_image="yocto_"+max(yocto_artifacts)+".qcow2"))
